@@ -1,0 +1,67 @@
+{{ define "main" }}
+
+<section class="gallery-section section">
+  <div class="section-inner">
+
+    <div class="gallery">
+      <div class="gallery-inner" id="lightgallery">
+        {{ range .Params.gallery.list }}
+          <a href="{{- .imgUrl -}}">
+            {{ with .thumbUrl }}
+              <img src="{{- . -}}">
+            {{ else }}
+              <img src="{{- .imgUrl -}}">
+            {{ end }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="gallery-desc">
+      <h1 class="title">
+        {{ .Params.gallery.title }}
+      </h1>
+      <h3 class="subtitle">
+        {{ .Params.gallery.subtitle }}
+      </h3>
+      <div class="desc">
+        {{ .Params.gallery.desc }}
+      </div>
+      <a href="#" class="btn">{{ .Params.gallery.btnTxt }}</a>
+    </div>
+
+  </div>
+</section>
+
+{{ partial "video-section.html" .Params.video }}
+
+<section class="switch-section section">
+  <div class="switch-bg bg-off" style="background-image: url('/uploads/switch-bg.jpg')"></div>
+  <div class="switch-bg bg-on" style="background-image: url('/uploads/benefits.jpg')"></div>
+  <div class="section-inner">
+    <!--div class="switch">
+      <div class="text-on">ARL On</div>
+      <div class="text-off"></div>
+      <div class="circle">ARL Off</div>
+    </div-->
+  </div>
+</section>
+
+<section class="articles-section section">
+  <div class="section-inner">
+
+    <div class="articles">
+      {{ $productTitle := .Params.title }}
+      {{ range where (where .Site.RegularPages "Section" "blog" ) "Params.relProd" "=" $productTitle }}
+      <article class="article">
+        {{ .Params.title }}
+      </article>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+
+{{ partial "products-section.html" (dict "Context" . "sectionTitle" .Params.title ) }}
+
+{{ end }}

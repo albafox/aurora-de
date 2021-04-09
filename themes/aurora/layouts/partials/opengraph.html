@@ -1,0 +1,7 @@
+<meta property="og:title" content="{{ with .Site.Data.settings.title }}{{ . }}{{ else }}{{ .Title }}{{ end }}" />
+<meta property="og:description" content="{{ with .Site.Data.settings.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ with .Site.Data.settings.logoUrl -}}
+  <meta property="og:image" content="{{ . }}"/>
+{{- end }}

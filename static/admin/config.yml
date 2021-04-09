@@ -1,0 +1,188 @@
+# when using the default proxy server port
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+media_folder: static/uploads
+public_folder: /uploads
+collections:
+  - name: "settings"
+    label: "Settings"
+    files:
+      - file: "data/settings.yml"
+        label: "Global Settings"
+        name: "globalSettings"
+        fields:
+          - {label: "Logo", name: "logoUrl", widget: image }
+          - {label: "Meta Title", name: "title", widget: string, required: false }
+          - {label: "Meta Description", name: "desc", widget: text, required: false }
+          - {label: "Google Tag Manager ID", name: "gtm_id", widget: string, required: false }
+          - {label: "Phone", name: "phone", widget: object, fields: [
+            {label: "Phone number with country code", name: "num", widget: string },
+            {label: "Phone number display text", name: "text", widget: string }
+          ]}
+          - {label: "Email", name: "mailto", widget: string }
+          - {label: "Main Navigation", label_singular: "Link", name: "nav", widget: list, fields: [
+            {label: "Link Title", name: "title", widget: string },
+            {label: "Link Path", name: "url", widget: string }
+          ]}
+          - {label: "Social links", name: "social", widget: object, required: false, fields: [
+            {label: "Facebook URL", name: "fb", widget: string, required: false },
+            {label: "Instagram URL", name: "ig", widget: string, required: false },
+            {label: "Twitter URL", name: "tw", widget: string, required: false },
+            {label: "Youtube URL", name: "yt", widget: string, required: false }
+          ]}
+      - file: "data/footer.yml"
+        label: "Footer Settings"
+        name: "footerSettings"
+        fields:
+          - {label: "Primary Footer Menu", name: "nav1", widget: object, fields: [
+            {label: "Menu Title", name: "title", widget: string },
+            {label: "Menu Links", label_singular: "Link", name: "menu", widget: list, fields: [
+              {label: "Link Title", name: "title", widget: string },
+              {label: "Link URL", name: "url", widget: string }
+            ]}
+          ]}
+          - {label: "Secondary Footer Menu", name: "nav2", widget: object, fields: [
+            {label: "Menu Title", name: "title", widget: string },
+            {label: "Menu Links", label_singular: "Link", name: "menu", widget: list, fields: [
+              {label: "Link Title", name: "title", widget: string },
+              {label: "Link Path", name: "url", widget: string }
+            ]}
+          ]}
+          - {label: "About Section", name: "about", widget: object, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Section Text", name: "text", widget: text }
+          ]}
+          - {label: "Newsletter Section", name: "news", widget: object, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Section Description", name: "desc", widget: text },
+            {label: "Newsletter Form", name: "form", widget: object, fields: [
+              {label: "Email Input Placeholder Text", name: "placeholder", widget: string },
+              {label: "Form Submit Button Text", name: "btnText", widget: string }
+            ]}
+          ]}
+      - file: "data/products.yml"
+        label: "Product Settings"
+        name: "productSettings"
+        fields:
+          - {label: "All Products Button Text", name: "btnViewAll", widget: string }
+          - {label: "CTA Shopping Link", name: "btnShopping", widget: string }
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    folder: "content/products"
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Product Title", name: "title", widget: string }
+      - { label: "Product Description", name: "desc", widget: text }
+      - { label: "Product Image", name: "prodImgUrl", widget: image }
+      - { label: "Product of the Month", name: "featured", widget: boolean, required: false }
+      - { label: "Product Gallery", name: "gallery", widget: object, collapsed: true, fields: [
+        { label: "Gallery Title", name: "title", widget: string },
+        { label: "Gallery SubTitle", name: "subtitle", widget: string },
+        { label: "Gallery Description", name: "desc", widget: text },
+        { label: "Add to Cart Button Text", name: "btnTxt", widget: string },
+        { label: "Gallery Images", label_singular: "Image", name: "list", widget: list, collapsed: true, fields: [
+          { label: "Image", name: "imgUrl", widget: image },
+          { label: "Image Thumbnail", name: "thumbUrl", widget: image, required: false }
+        ]}
+      ]}
+      - {label: "Video Section", name: "video", widget: object, collapsed: true, fields: [
+        {label: "Section Title", name: "title", widget: string },
+        {label: "Video Placeholder", name: "placeholderUrl", widget: image },
+        {label: "Advantage 1", name: "adv1", widget: object, collapsed: true, fields: [
+          {label: "Advantage Description", name: "desc", widget: text },
+          {label: "Advantage Icon", name: "iconUrl", widget: image }
+        ]},
+        {label: "Advantage 2", name: "adv2", widget: object, collapsed: true, fields: [
+          {label: "Advantage Description", name: "desc", widget: text },
+          {label: "Advantage Icon", name: "iconUrl", widget: image }
+        ]}
+      ]}
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: string }
+      - {label: "Publish Date", name: "date", widget: datetime }
+      - {label: "Featured Image", name: "featuredUrl", widget: image }
+      - {label: "Related Product", name: "relProd", widget: relation,
+         collection: "products", search_fields: ["title"],
+         value_field: "title", required: false }
+      - {label: "Body", name: "body", widget: markdown }
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "content/_index.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Hero Section", name: "hero", widget: object, collapsed: true, fields: [
+            {label: "Title", name: "title", widget: string},
+            {label: "Subtitle", name: "subtitle", widget: string, required: false },
+            {label: "Button", name: "btn", widget: object, fields: [
+              {label: "URL", name: "url", widget: string },
+              {label: "Text", name: "txt", widget: string }
+            ]},
+            {label: "Background Image", name: "bgUrl", widget: image }
+          ]}
+          - {label: "Features Section", name: "features", widget: object, collapsed: true, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Feature 1", name: "feature1", widget: object, collapsed: true, fields: [
+              {label: "Feature Title", name: "title", widget: string },
+              {label: "Feature Description", name: "desc", widget: string },
+              {label: "Feature Icon", name: "iconUrl", widget: image }
+            ]},
+            {label: "Feature 2", name: "feature2", widget: object, collapsed: true, fields: [
+              {label: "Feature Title", name: "title", widget: string },
+              {label: "Feature Description", name: "desc", widget: string },
+              {label: "Feature Icon", name: "iconUrl", widget: image }
+            ]},
+            {label: "Feature 3", name: "feature3", widget: object, collapsed: true, fields: [
+              {label: "Feature Title", name: "title", widget: string },
+              {label: "Feature Description", name: "desc", widget: string },
+              {label: "Feature Icon", name: "iconUrl", widget: image }
+            ]}
+          ]}
+          - {label: "Products Section", name: "products", widget: object, collapsed: true, fields: [
+            {label: "Section Title", name: "title", widget: string }
+          ]}
+          - {label: "Testimonials", label_singular: "Testimonial", name: "testimonials", widget: list, collapsed: true, fields: [
+            {label: "Name", name: "name", widget: string },
+            {label: "Text", name: "text", widget: text },
+            {label: "Photo", name: "photoUrl", widget: image }
+          ]}
+          - {label: "Featured Product Section", name: "featuredProd", widget: object, collapsed: true, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Product Image", name: "imgUrl", widget: image },
+            {label: "About Product", name: "about", widget: text }
+          ]}
+          - {label: "Benefits Section", name: "benefits", widget: object, collapsed: true, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Section Description", name: "desc", widget: text },
+            {label: "Background Image", name: "bgUrl", widget: image },
+            {label: "Benefits", name: "list", widget: list, collapsed: true, fields: [
+              {label: "Title", name: "title", widget: string },
+              {label: "Description", name: "desc", widget: text },
+              {label: "Icon", name: "iconUrl", widget: image }
+            ]},
+            {label: "Shop Button Text", name: "shopBtn", widget: string },
+            {label: "All Benefits Button Text", name: "viewAllBtn", widget: string }
+          ]}
+          - {label: "Video Section", name: "video", widget: object, collapsed: true, fields: [
+            {label: "Section Title", name: "title", widget: string },
+            {label: "Video Placeholder", name: "placeholderUrl", widget: image },
+            {label: "Advantage 1", name: "adv1", widget: object, collapsed: true, fields: [
+              {label: "Advantage Description", name: "desc", widget: text },
+              {label: "Advantage Icon", name: "iconUrl", widget: image }
+            ]},
+            {label: "Advantage 2", name: "adv2", widget: object, collapsed: true, fields: [
+              {label: "Advantage Description", name: "desc", widget: text },
+              {label: "Advantage Icon", name: "iconUrl", widget: image }
+            ]}
+          ]}

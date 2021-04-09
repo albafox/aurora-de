@@ -1,0 +1,171 @@
+@import 'media-break-points';
+
+/* Colors */
+$light-gold: #D3A21A;
+$gold: #CF9F4A;
+$light-grey: #F2F2F2;
+$grey: #737B7D ;
+$dark-grey: #4F4F4F;
+$dark-red: #470000;
+
+/* Section padding */
+@mixin section {
+  padding: 0 20px;
+
+  @media #{$small-screen-and-up} {
+    padding: 0 32px;
+  }
+
+  @media #{$medium-screen-and-up} {
+    padding: 0 42px;
+  }
+
+  @media #{$large-screen-and-up} {
+    padding: 0;
+  }
+}
+
+/* Page content width */
+@mixin boxed {
+  max-width: 940px;
+  margin: 0 auto;
+
+  @media #{$medium-screen-and-up} {
+    max-width: 970px;
+  }
+
+  @media #{$large-screen-and-up} {
+    max-width: 1170px;
+  }
+}
+
+/* Section */
+.section {
+  @include section;
+
+  .section-inner {
+    @include boxed;
+  }
+}
+
+/* Hero Section */
+.hero-section {
+
+  .section-inner {
+    padding: 102px 0 0;
+  }
+}
+
+/* Defaults */
+a {
+  color: $gold;
+  border-bottom: 1px solid rgba($gold, 0.8);
+  white-space: nowrap;
+  transition: all 0.3s;
+  text-decoration: none;
+
+  &:hover {
+    color: rgba($gold, 0.7);
+    border-bottom: 1px solid rgba($gold, 1);
+  }
+}
+
+
+a.arrow-link {
+  display: flex;
+  align-items: center;
+  color: $dark-grey;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+
+  span {
+    padding: 0 9px 0 0;
+  }
+
+  svg {
+    width: 8px;
+    height: 12px;
+    fill: #2E3A59;
+    transition: fill 0.3s;
+  }
+
+  &:hover {
+    color: $gold;
+
+    svg {
+      fill: $gold;
+    }
+  }
+
+  &.gold {
+    color: $gold;
+
+    svg {
+      fill: $gold;
+    }
+
+    &:hover {
+      color: $dark-grey;
+
+      svg {
+        fill: #2E3A59;
+      }
+    }
+  }
+
+  &.on-dark {
+    color: #fff;
+
+    svg {
+      fill: $gold;
+    }
+
+    &:hover {
+      color: $gold;
+    }
+  }
+}
+
+img,
+svg {
+  vertical-align: top;
+}
+
+/* Button */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  height: 34px;
+  padding: 0 20px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  color: #000;
+  border: 1px solid $gold;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: $gold;
+    color: #fff;
+  }
+
+  &.on-dark {
+    border-color: #fff;
+    color: $gold;
+
+    &:hover {
+      background: #fff;
+    }
+  }
+
+  &.btn-sq {
+    border-radius: 0;
+  }
+}

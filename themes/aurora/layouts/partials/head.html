@@ -1,0 +1,21 @@
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ with .Site.Data.settings.title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Site.Data.settings.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  {{ partial "opengraph.html" . }}
+  <link rel="canonical" href="{{ .Permalink }}" />
+  <link rel="icon" href="" />
+  <link rel="icon" href="" />
+  <link rel="apple-touch-icon-precomposed" href=""  />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/splide-core.min.css">
+  <link rel="stylesheet" href="/css/lightgallery.min.css" />
+  {{ $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true ) }}
+  {{ $style := resources.Get "scss/style.scss" | resources.ToCSS $options }}
+  <link rel="preload" as="style" href="{{ $style.Permalink }}"  />
+  <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>

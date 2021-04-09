@@ -1,0 +1,19 @@
+logoUrl: /uploads/aurora_logo.png
+title: Page title
+desc: Page description
+phone:
+  text: 040 4011 0162
+  num: "04040110162"
+mailto: info@clearlightinfrarotkabinen.de
+nav:
+  - title: Shop
+    url: "#"
+  - title: Learn
+    url: "#"
+  - title: Contact
+    url: "#"
+social:
+  fb: https://www.facebook.com/
+  ig: https://www.instagram.com/clearlight_life
+  tw: https://twitter.com/
+  yt: https://www.youtube.com/

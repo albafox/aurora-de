@@ -1,0 +1,38 @@
+nav1:
+  title: Shortcut
+  menu:
+    - title: Home
+      url: "#"
+    - title: Shop
+      url: "#"
+    - title: Learn
+      url: "#"
+    - title: Quiz
+      url: "#"
+    - title: Contact
+      url: "#"
+nav2:
+  title: Legal
+  menu:
+    - title: Privacy & Data
+      url: "#"
+    - title: Shipping Policy
+      url: "#"
+    - title: Impressum
+      url: "#"
+    - title: Site Map
+      url: "#"
+about:
+  title: About the Company
+  text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo, volutpat
+    ut dictum vel, in ut dolor, sapien urna.Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Justo, volutpat ut dictum vel, in ut dolor,
+    sapien urna.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo,
+    volutpat ut dictum vel, in ut dolor, sapien urna.
+news:
+  title: Latest news from us
+  desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Justo, volutpat
+    ut dictum vel, in ut dolor, sapien urna.
+  form:
+    btnText: Sign up
+    placeholder: Enter your email

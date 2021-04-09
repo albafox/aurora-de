@@ -1,0 +1,56 @@
+<section class="products-section section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">
+        {{ .sectionTitle }}
+      </h2>
+      <div class="section-button">
+        <a href="/products" class="btn btn-sq">{{- .Context.Site.Data.products.btnViewAll -}}</a>
+      </div>
+    </div>
+
+    <div class="splide">
+      <div class="splide__arrows">
+        <div class="splide__arrow splide__arrow--prev">
+          <svg width="18" height="26" viewBox="0 0 18 26">
+            <path d="M17 25L2 12.4L17 1" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="splide__arrow splide__arrow--next">
+          <svg width="18" height="26" viewBox="0 0 18 26">
+            <path d="M1 0.999998L16 13.6L1 25" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          {{ range where .Context.Site.RegularPages "Section" "products" }}
+            <li class="splide__slide">
+              <div class="product">
+                <div class="product-img">
+                  <div class="product-img-inner" style="background-image: url('{{- .Params.prodImgUrl -}}')"></div>
+                </div>
+                <div class="product-desc">
+                  <h3 class="product-title">
+                    {{ .Params.title }}
+                  </h3>
+                  <div class="desc">
+                    {{ .Params.desc }}
+                  </div>
+                  <div class="product-link">
+                    <a href="{{- .Permalink -}}" class="arrow-link">
+                      <span>{{- .Site.Data.products.btnShopping -}}</span>
+                      <svg width="8" height="12" viewBox="0 0 8 12">
+                        <path d="M1.64338 11.6567L7.30005 6L1.64338 0.343328L0.700049 1.286L5.41472 6L0.700049 10.714L1.64338 11.6567Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

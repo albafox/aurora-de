@@ -1,0 +1,42 @@
+<section class="video-section section">
+  <div class="section-inner">
+
+    <div class="video-wrap">
+      <div class="video-placeholder" style="background-image: url('{{- .placeholderUrl -}}')">
+        <div class="play-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" >
+            <path d="M17.6667 34.3333C26.8714 34.3333 34.3333 26.8714 34.3333 17.6667C34.3333 8.46192 26.8714 1 17.6667 1C8.46192 1 1 8.46192 1 17.6667C1 26.8714 8.46192 34.3333 17.6667 34.3333Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.333 11L24.333 17.6667L14.333 24.3333V11Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="green-square"></div>
+    </div>
+
+    <div class="about">
+      <h3 class="title">
+        {{ .title }}
+      </h3>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">
+            <img src="{{- .adv1.iconUrl -}}">
+          </div>
+          <div class="desc">
+            {{ .adv1.desc }}
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="icon">
+            <img src="{{- .adv2.iconUrl -}}">
+          </div>
+          <div class="desc">
+            {{ .adv2.desc }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

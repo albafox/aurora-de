@@ -1,0 +1,179 @@
+{{ define "main" }}
+
+<section class="hero-section section" style="background-image: url('{{- .Params.hero.bgUrl -}}');">
+  <div class="section-inner">
+    <h1>
+      {{ .Params.hero.title }}
+    </h1>
+    <h2>
+      {{ .Params.hero.subtitle }}
+    </h2>
+    <a class="btn on-dark" href="{{- .Params.hero.btn.url -}}">
+      {{- .Params.hero.btn.txt -}}
+    </a>
+  </div>
+</section>
+
+<section class="features-section section">
+  <div class="section-inner">
+    <h2 class="section-title">
+      {{ .Params.features.title }}
+    </h2>
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="icon">
+            <img src="{{- .Params.features.feature1.iconUrl -}}">
+          </div>
+          <div class="title">
+            {{ .Params.features.feature1.title }}
+          </div>
+          <div class="desc">
+            {{ .Params.features.feature1.desc }}
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="icon">
+            <img src="{{- .Params.features.feature2.iconUrl -}}">
+          </div>
+          <div class="title">
+            {{ .Params.features.feature2.title }}
+          </div>
+          <div class="desc">
+            {{ .Params.features.feature2.desc }}
+          </div>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-inner">
+          <div class="icon">
+            <img src="{{- .Params.features.feature3.iconUrl -}}">
+          </div>
+          <div class="title">
+            {{ .Params.features.feature3.title }}
+          </div>
+          <div class="desc">
+            {{ .Params.features.feature3.desc }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{{ partial "products-section.html" (dict "Context" . "sectionTitle" .Params.products.title ) }}
+
+<section class="testimonials-section section">
+  <div class="section-inner">
+    <div class="testimonials">
+      {{ range .Params.testimonials }}
+        <div class="testimonial">
+          <div class="testimonial-inner">
+            <div class="photo" style="background-image: url('{{- .photoUrl -}}')"></div>
+            <div class="desc">
+             {{ .text }}
+            </div>
+            <div class="name">
+              {{ .name }}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="featured-product-section section">
+  <div class="section-inner">
+
+    <h2 class="section-title">{{ .Params.featuredProd.title }}</h2>
+
+    {{ $prodFeaturedImg := .Params.featuredProd.imgUrl }}
+    {{ $prodAbout := .Params.featuredProd.about }}
+
+    {{ range first 1 (where (where .Site.RegularPages "Section" "products" ) ".Params.featured" "=" true).ByDate }}
+      <div class="featured-product">
+        <div class="product-image-wrap">
+          <div class="product-image" style="background-image: url('{{- $prodFeaturedImg -}}')"></div>
+          <div class="gold-square"></div>
+        </div>
+        <div class="product-info">
+          {{ with $prodAbout }}
+            <div class="about">
+              {{ . }}
+            </div>
+          {{ end }}
+          <div class="btn-wrap">
+            <a href="/products" class="btn btn-sq">{{- .Site.Data.products.btnViewAll -}}</a>
+          </div>
+          <div class="product-desc">
+            <div class="title">
+              {{ .Params.title }}
+            </div>
+            <div class="desc">
+              {{ .Params.desc }}
+            </div>
+            <div class="product-link">
+              <a href="{{- .Permalink -}}" class="arrow-link gold">
+                <span>{{- .Site.Data.products.btnShopping -}}</span>
+                <svg width="8" height="12" viewBox="0 0 8 12">
+                  <path d="M1.64338 11.6567L7.30005 6L1.64338 0.343328L0.700049 1.286L5.41472 6L0.700049 10.714L1.64338 11.6567Z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+
+  </div>
+</section>
+
+<section class="benefits-section section" style="background-image: url('{{- .Params.benefits.bgUrl -}}')">
+  <div class="section-inner">
+
+    <h2 class="section-title">
+      {{ .Params.benefits.title }}
+    </h2>
+    <h3 class="section-subtitle">
+      {{ .Params.benefits.desc }}
+    </h3>
+
+    <div class="benefits">
+      {{ range .Params.benefits.list }}
+        <div class="benefit">
+          <div class="benefit-inner">
+            <div class="icon">
+              <img src="{{- .iconUrl -}}">
+            </div>
+            <h3 class="title">
+              {{ .title }}
+            </h3>
+            <div class="desc">
+              {{ .desc }}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+
+    <div class="section-footer">
+      <a href="#" class="btn on-dark">{{ .Params.benefits.shopBtn }}</a>
+      <a href="#" class="arrow-link on-dark">
+        <span>{{ .Params.benefits.viewAllBtn }}</span>
+        <svg width="8" height="12" viewBox="0 0 8 12">
+        <path d="M1.64338 11.6567L7.30005 6L1.64338 0.343328L0.700049 1.286L5.41472 6L0.700049 10.714L1.64338 11.6567Z"/>
+      </svg></a>
+    </div>
+  </div>
+</section>
+
+{{ partial "video-section.html" .Params.video }}
+
+{{ end }}

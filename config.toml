@@ -1,0 +1,10 @@
+baseURL = "https://aurora-de.netlify.app"
+languageCode = "de-de"
+title = "The safest portable Infrared therapy available"
+theme = "aurora"
+
+[params]
+description = "The safest portable Infrared therapy available"
+
+[markup.goldmark.renderer]
+unsafe= true

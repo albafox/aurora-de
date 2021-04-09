@@ -1,0 +1,40 @@
+// Media query screen breaking point variables.
+$extra-small-begin: 0px;
+$extra-small-end: 639px;
+$small-begin: 640px;
+$small-end: 1023px;
+$medium-begin: 1024px;
+$medium-end: 1279px;
+$large-begin: 1280px;
+$large-end: 1439px;
+$extra-large-begin: 1440px;
+$extra-large-end: 1919px;
+$extra-extra-large-begin: 1920px;
+
+// Media query screen width variables.
+$all-screens: "(min-width: #{$extra-small-begin})";
+
+$extra-small-screen: "(max-width: #{$extra-small-end})";
+
+$small-screen: "(min-width: #{$small-begin}) and (max-width: #{$small-end})";
+$small-screen-and-up: "(min-width: #{$small-begin})";
+$small-screen-and-down: "(max-width: #{$small-end})";
+
+$medium-screen: "(min-width: #{$medium-begin}) and (max-width: #{$medium-end})";
+$medium-screen-and-up: "(min-width: #{$medium-begin})";
+$medium-screen-and-down: "(max-width: #{$medium-end})";
+
+$large-screen: "(min-width: #{$large-begin}) and (max-width: #{$large-end})";
+$large-screen-and-up: "(min-width: #{$large-begin})";
+$large-screen-and-down: "(max-width: #{$large-end})";
+
+$extra-large-screen: "(min-width: #{$extra-large-begin}) and (max-width: #{$extra-large-end})";
+$extra-large-screen-and-up: "(min-width: #{$extra-large-begin})";
+$extra-large-screen-and-down: "(max-width: #{$extra-large-end})";
+
+$extra-extra-large-screen: "(min-width: #{$extra-extra-large-begin})";
+$extra-extra-large-screen-and-up: "(min-width: #{$extra-extra-large-begin})";
+
+// Media query screen orientation variables.
+$portrait: "(orientation: portrait)";
+$landscape: "(orientation: landscape)";
